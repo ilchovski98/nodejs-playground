@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Homepage</title>
+  <style>
+    .newsletter,
+    .greeting {
+      height: 100vh;
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: limegreen;
+    }
+
+    .newsletter {
+      background: orange;
+    }
+
+    .newsletter .newsletter__form {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .newsletter .newsletter__form-row {
+      margin-bottom: 10px;
+    }
+  </style>
+</head>
+<body>
+  <div class="greeting">
+    <h1 class="greeting__title">Hello World!</h1><!-- /.greeting__title -->
+  </div><!-- /.greeting -->
+
+  <div class="newsletter">
+    <form action="" class="newsletter__form">
+      <div class="newsletter__form-row">
+        <label for="name">Name</label>
+        <input type="text" id="name">
+      </div><!-- /.newsletter__form-row -->
+
+      <div class="newsletter__form-row">
+        <label for="email">Email</label>
+        <input type="email" id="email">
+      </div><!-- /.newsletter__form-row -->
+
+      <button type="submit">Subscribe</button>
+    </form>
+  </div><!-- /.newsletter -->
+</body>
+</html>
