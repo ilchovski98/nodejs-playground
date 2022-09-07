@@ -8,15 +8,25 @@ const requestListener = (req, res) => {
   res.setHeader('Content-Type', 'text/html');
   res.writeHead(200);
 
-  console.log('__dirname', __dirname);
-
   fs.readFile(__dirname + '/index.html', (err, data) => {
-    console.log('data', data);
     res.end(data)
   })
-}
+};
 
-const server = http.createServer(requestListener);
+const requestListener2 = (req, res) => {
+  fs.promises.readFile(__dirname + '/index.html')
+    .then(content => {
+      res.setHeader('Content-Type', 'text/html');
+      res.writeHead(200);
+      res.end(content);
+    })
+    .catch(error => {
+      res.writeHead(500);
+      res.end(error);
+    })
+};
+
+const server = http.createServer(requestListener2);
 
 server.listen(port, host, () => {
   console.log(`Server is listening on http://${host}:${port}`);
