@@ -1,0 +1,9 @@
+{
+  "name": "async",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "devDependencies": {
+    "request": "^2.88.2"
+  }
+}
