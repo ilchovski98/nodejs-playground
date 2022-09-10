@@ -1,26 +1,21 @@
 const http = require('http');
+const { fork, ChildProcess } = require('child_process');
 
 const port = 8000;
 const host = 'localhost';
 
-const slowFunction = () => {
-  let counter = 0;
-
-  while (counter < 5000000000) {
-    counter++;
-  }
-
-  return counter
-}
-
 const requestListener = (req, res) => {
   if (req.url === '/total') {
-    const slowResult = slowFunction();
-    const message = `Slow result: ${slowResult}`;
+    const child = fork(__dirname + '/getCount');
 
-    res.setHeader('Content-Type', 'text/html');
-    res.writeHead(200);
-    res.end(message);
+    child.on('message', (message) => {
+      console.log('Returning /total results');
+      res.setHeader('Content-Type', 'application/json');
+      res.writeHead(200);
+      res.end(message);
+    });
+
+    child.send('START');
   } else if (req.url === '/hello') {
     res.setHeader('Content-Type', 'application/json');
     res.writeHead(200);
