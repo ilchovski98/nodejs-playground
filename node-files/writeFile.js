@@ -2,7 +2,7 @@ const fs = require('fs').promises;
 
 async function openFile() {
   try {
-    const csvHeaders = 'name,quantity,price'
+    const csvHeaders = 'name,quantity,price';
     await fs.writeFile('groceries.csv', csvHeaders);
   } catch (error) {
     console.error(`Got an error trying to write to a file: ${error.message}`);
